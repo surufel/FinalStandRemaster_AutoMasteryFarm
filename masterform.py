@@ -17,25 +17,25 @@ def automastery2():
     global ativado
     contador(5)  # 5s para o usuário ir pra tela do Roblox
     while ativado:
-        # Passo 1 - Espera 2 minutos (CD do Zenkai)
-        time.sleep(120)
-
-        # Passo 2 - Segura "1" por 10 segundos (Esgotar HP e Ki com Neo-Kikoho)
-        p.keyDown('1')
-        time.sleep(10)
-        p.keyUp('1')
+        # Passo 1 - Sair da Safezone
+        p.keyDown('w')
+        time.sleep(4) # Anda para frente por 4 segundos, suficiente para sair da safezone
+        p.keyUp('w')
 
         if not ativado:
             break
+
+        # Passo 2 - Segura "1" por 10 segundos (Esgotar HP e Ki com Neo-Kikoho)
+        p.keyDown('1')
+        time.sleep(8) # Reduzido o tempo para 8 segundos.
+        p.keyUp('1')
 
         # Passo 3 - Transforma
         p.keyDown('x')
         time.sleep(0.5)
         p.press('g')
         p.keyUp('x')
-
-        if not ativado:
-            break
+        time.sleep(3)
 
         # Passo 4 - Executa Esc + R + Enter (Reset)
         p.press('esc')
@@ -43,6 +43,13 @@ def automastery2():
         p.press('r')
         time.sleep(0.2)
         p.press('enter')
+
+        # Passo 5 - Espera 2 minutos (CD do Zenkai)
+        time.sleep(120)
+
+        if not ativado:
+            break
+
 
 def iniciar_mastery1():
     global ativado
