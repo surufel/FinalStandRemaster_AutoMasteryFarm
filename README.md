@@ -43,6 +43,8 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 ## 🚀 Como Instalar as Dependências e Usar a Ferramenta:
 
+0. Baixe o Git caso não tenha.
+
 1. Clone ou baixe este repositório.
 ```
 git clone https://github.com/surufel/FinalStandRemaster_AutoMasteryFarm.git
