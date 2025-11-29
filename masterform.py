@@ -103,7 +103,11 @@ btn_m2 = tk.Button(
 )
 btn_m2.pack(pady=5)
 
-btn_stop = tk.Button(root, text="Parar", command=parar, font=("JetBrains Mono", 12), bg="#2d2d2d", fg="white")
+btn_stop = tk.Button(root, text="Parar",
+                      command=parar,
+                        font=("JetBrains Mono", 12),
+                          bg="#2d2d2d",
+                            fg="white")
 btn_stop.pack(pady=5)
 
 instru = tk.Label(root, text="Instrução da AutoMastery1: Segure X e aperte Esc (Abre o menu do Roblox), depois aperte Esc novamente e ative o Script.", bg="#1e1e1e", fg="#bbbbbb", font=("JetBrains Mono", 9))
