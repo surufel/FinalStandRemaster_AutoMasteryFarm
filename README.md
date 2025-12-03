@@ -45,13 +45,13 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 0. Baixe o Git caso não tenha.
 
-1. Clone ou baixe este repositório.
+1. Clone o repositório no Terminal/CMD/Powershell do Windows, ou baixe o arquivo ZIP (clicando no botão azul "< > Code", e clicando em "Download ZIP").
 ```
 git clone https://github.com/surufel/FinalStandRemaster_AutoMasteryFarm.git
 ```
-2. Instale as dependências:
+2. Instale as dependências, no Terminal/CMD/Powershell:
 ```
-pip install pydirectinput keyboard
+python -m pip install pydirectinput keyboard
 ```
 3. Execute a ferramenta pelo Terminal:
 ```
