@@ -9,6 +9,8 @@ Essa automação foi desenvolvida por pedido de amigos.
 ## ⚙️ Funcionalidades
 
 ### AutoMastery 1 (Método Tradicional)
+# Utilize para Kaiokens e formas já masterizadas que não precisam de tempo carregando ki para utilizar.
+
 - Pressiona repetidamente a tecla `G` para farm de maestria.
 - Ideal para jogadores que utilizam o método tradicional.
 - Instruções:
@@ -16,17 +18,22 @@ Essa automação foi desenvolvida por pedido de amigos.
   2. Feche o menu (`Esc` novamente).
   3. Ative o script.
 
+
 ### AutoMastery 2 (Método Zenkai)
+# EQUIPE NEO-KIKOHO NA TECLA '1'.
+
 - Automação para farming usando o **Neo-Kikoho**.
 - Funciona com cooldown de 2 minutos do Zenkai.
 - Passos automatizados:
   1. Aguarda 2 minutos (CD do Zenkai).
-  2. Segura `1` por 10 segundos para esgotar HP e Ki.
+  2. Segura `1` por 8 segundos para esgotar HP e Ki.
   3. Executa transformação (`X` + `G`).
   4. Reseta o personagem (`Esc` + `R` + `Enter`).
 - **Observação:** Equipar Neo-Kikoho na tecla `1`.
 
+
 ### Botão Parar
+
 - Interrompe qualquer automação em execução.
 
 ---
@@ -43,13 +50,13 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 ## 🚀 Como Instalar as Dependências e Usar a Ferramenta:
 
-0. Baixe o Git caso não tenha.
+0. Baixe o Git e Python caso não tenha.
 
-1. Clone o repositório no Terminal/CMD/Powershell do Windows, ou baixe o arquivo ZIP (clicando no botão azul "< > Code", e clicando em "Download ZIP").
+1. Clone ou baixe este repositório no cmd do Git.
 ```
 git clone https://github.com/surufel/FinalStandRemaster_AutoMasteryFarm.git
 ```
-2. Instale as dependências, no Terminal/CMD/Powershell:
+2. Instale as dependências:
 ```
 python -m pip install pydirectinput keyboard
 ```
@@ -57,4 +64,4 @@ python -m pip install pydirectinput keyboard
 ```
 python masterform.py
 ```
-Ou então, abra o diretório do repositório clonado, abra o masterform.py clicando com Botão Direito do Mouse -> Abrir Com -> Python.
+Ou então, abra diretamente no diretório do repositório clonado (pasta feita pelo git) e então abra o masterform.py clicando com Botão Direito do Mouse -> Abrir Com -> Python.
