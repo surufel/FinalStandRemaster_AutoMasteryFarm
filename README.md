@@ -9,7 +9,11 @@ Essa automação foi desenvolvida por pedido de amigos.
 ## ⚙️ Funcionalidades
 
 ### AutoMastery 1 (Método Tradicional)
+<<<<<<< Updated upstream
 # Utilize para Kaiokens e formas já masterizadas que não precisam de tempo carregando ki para utilizar.
+=======
+### Utilize para Kaiokens e formas já masterizadas que não precisam de tempo carregando ki para utilizar.
+>>>>>>> Stashed changes
 
 - Pressiona repetidamente a tecla `G` para farm de maestria.
 - Ideal para jogadores que utilizam o método tradicional.
@@ -20,7 +24,11 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 
 ### AutoMastery 2 (Método Zenkai)
+<<<<<<< Updated upstream
 # EQUIPE NEO-KIKOHO NA TECLA '1'.
+=======
+### EQUIPE NEO-KIKOHO NA TECLA '1'.
+>>>>>>> Stashed changes
 
 - Automação para farming usando o **Neo-Kikoho**.
 - Funciona com cooldown de 2 minutos do Zenkai.
