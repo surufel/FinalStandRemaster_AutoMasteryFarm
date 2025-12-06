@@ -23,7 +23,6 @@ Essa automação foi desenvolvida por pedido de amigos.
 ### AutoMastery 2 (Método Zenkai)
 ### EQUIPE NEO-KIKOHO NA TECLA '1'.
 
-
 - Automação para farming usando o **Neo-Kikoho**.
 - Funciona com cooldown de 2 minutos do Zenkai.
 - Passos automatizados:
@@ -31,12 +30,20 @@ Essa automação foi desenvolvida por pedido de amigos.
   2. Segura `1` por 8 segundos para esgotar HP e Ki.
   3. Executa transformação (`X` + `G`).
   4. Reseta o personagem (`Esc` + `R` + `Enter`).
-- **Observação:** Equipar Neo-Kikoho na tecla `1`.
+- **Observação:** O padrão de carregar o ki para zenkai são `0.5s`, mas você pode ajustá-lo na aplicação.
+
+
+### Tempo de 'x' Configurável
+
+- Ajuste o tempo que a tecla `x` é mantida pressionada durante a transformação.
+- Padrão: `0.5` segundos.
+- Útil para diferentes builds de personagens ou preferências de tempo.
 
 
 ### Botão Parar
 
 - Interrompe qualquer automação em execução.
+- Exibe o total de Zenkais quando parado.
 
 ---
 
@@ -52,18 +59,48 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 ## 🚀 Como Instalar as Dependências e Usar a Ferramenta:
 
-0. Baixe o Git e Python caso não tenha.
+## 0. Baixe o Git e Python caso não tenha.
 
 1. Clone ou baixe este repositório no cmd do Git.
 ```
 git clone https://github.com/surufel/FinalStandRemaster_AutoMasteryFarm.git
 ```
-2. Instale as dependências:
+
+### 2. Instale as dependências:
 ```
 python -m pip install pydirectinput keyboard
 ```
-3. Execute a ferramenta pelo Terminal:
+
+### 3. Execute a ferramenta pelo arquivo exe:
 ```
-python masterform.py
+masterform-exe_ptbr.exe
 ```
-Ou então, abra diretamente no diretório do repositório clonado (pasta feita pelo git) e então abra o masterform.py clicando com Botão Direito do Mouse -> Abrir Com -> Python.
+
+Ou então, abra diretamente no diretório do repositório clonado (pasta feita pelo git) e então abra o masterform-python_ptbr.py clicando com Botão Direito do Mouse -> Abrir Com -> Python.
+
+Alternativamente, você pode executar pelo terminal do python:
+```
+python masterform-python_ptbr.py
+```
+
+---
+
+## 📝 Dicas de Uso
+
+- **AutoMastery 1**: Melhor para pressionar teclas rapidamente sem cooldown.
+- **AutoMastery 2**: Melhor para farm de Zenkai com gerenciamento de cooldown.
+- **Contador de Zenkai**: Mostra quantos ciclos completos de Zenkai foram realizados.
+- **Timer do Próximo Zenkai**: Exibe contagem regressiva para o próximo Zenkai com base no cooldown
+
+---
+
+# ⚠️ Notas Importantes
+
+- Esta ferramenta automatiza entradas de teclado. Certifique-se de que Roblox está em foco ao executar.
+- Não use esta ferramenta em situações onde entrada automática pode causar problemas.
+- A ferramenta é fornecida "como está" para fins educacionais.
+- Sempre certifique-se de estar em conformidade com os termos de serviço do jogo.
+
+---
+
+**Desenvolvido por Surufel**
