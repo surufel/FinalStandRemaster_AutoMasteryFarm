@@ -14,8 +14,6 @@ def automastery1():
     global active
     countdown(5)  # 5s for user to get to Roblox screen
     while active:
-        if not active:
-            break
         p.press('g')
         time.sleep(0.4)
 
