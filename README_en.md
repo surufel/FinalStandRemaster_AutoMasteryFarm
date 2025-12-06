@@ -1,6 +1,6 @@
 # Auto Mastery - Final Stand Remastered (by Surufel)
 
-Automation for the **Final Stand: Remastered** game on Roblox, allowing automatic mastery farming using two distinct methods.
+Automation for the **Final Stand: Remastered** game on Roblox, allowing automatic mastery farming using three distinct methods.
 
 WARNING: Although it is unlikely that automation will cause bans in the game, it's always good to be careful. Use the tool responsibly.
 
@@ -33,8 +33,17 @@ This automation was developed upon request from friends.
   4. Reset the character (`Esc` + `R` + `Enter`).
 - **Note:** The standard for charging ki for zenkai is `0.5s`, but you can adjust it in the application.
 
+### AutoMastery 3 (Time Spent in Form Method)
+### Use for AFK and already used traditional and zenkai method a lot.
+# **Note** Do this only if you are with no EXP and no Zeni, any currency lost will be YOUR FAULT.
+- Automated steps:
+  1. Walks out of spawn
+  2. Transforms AFK's exactly for 19 minutes
+  3. Reset, and Repeat.
 
-### Configurable 'x' Key Hold Time
+
+
+### Configurable charging ki 'x' Key Hold Time
 
 - Adjust how long the `x` key is held during the transformation step.
 - Default: `0.5` seconds.
