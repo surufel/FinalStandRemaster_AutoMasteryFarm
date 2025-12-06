@@ -11,8 +11,6 @@ def automastery1():
     global ativado
     contador(5)  # 5s para o usuário ir pra tela do Roblox
     while ativado:
-        if not ativado:
-            break
         p.press('g')
         time.sleep(0.4)
 
@@ -58,14 +56,6 @@ def automastery2():
         if not ativado:
             break
 
-
-
-def iniciar_mastery3():
-    global ativado
-    if not ativado:
-        ativado = True
-        threading.Thread(target=automastery3, daemon=True).start()
-
 def iniciar_mastery1():
     global ativado
     if not ativado:
@@ -77,6 +67,12 @@ def iniciar_mastery2():
     if not ativado:
         ativado = True
         threading.Thread(target=automastery2, daemon=True).start()
+
+def iniciar_mastery3():
+    global ativado
+    if not ativado:
+        ativado = True
+        threading.Thread(target=automastery3, daemon=True).start()
 
 def automastery3():
     global ativado
