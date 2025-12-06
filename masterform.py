@@ -2,7 +2,6 @@ import tkinter as tk
 import threading
 import time
 import pydirectinput as p
-import keyboard
 
 ativado = False
 
@@ -19,15 +18,15 @@ def automastery2():
     while ativado:
         # Passo 1 - Sair da Safezone
         p.keyDown('w')
-        time.sleep(4) # Anda para frente por 4 segundos, suficiente para sair da safezone
+        time.sleep(4)
         p.keyUp('w')
 
         if not ativado:
             break
 
-        # Passo 2 - Segura "1" por 10 segundos (Esgotar HP e Ki com Neo-Kikoho)
+        # Passo 2 - Segura "1" por 8 segundos
         p.keyDown('1')
-        time.sleep(8) # Reduzido o tempo para 8 segundos.
+        time.sleep(8)
         p.keyUp('1')
 
         # Passo 3 - Transforma
@@ -37,19 +36,22 @@ def automastery2():
         p.keyUp('x')
         time.sleep(3)
 
-        # Passo 4 - Executa Esc + R + Enter (Reset)
+        # Passo 4 - Reset
         p.press('esc')
         time.sleep(0.2)
         p.press('r')
         time.sleep(0.2)
         p.press('enter')
 
-        # Passo 5 - Espera 2 minutos (CD do Zenkai)
-        time.sleep(120)
+        # Passo 5 - Espera 2 minutos
+        for i in range(120, 0, -1):
+            if not ativado:
+                break
+            atualizar_status(f"Próximo zenkai em {i}s...")
+            time.sleep(1)
 
         if not ativado:
             break
-
 
 def iniciar_mastery1():
     global ativado
@@ -66,15 +68,17 @@ def iniciar_mastery2():
 def parar():
     global ativado
     ativado = False
+    atualizar_status("Parado.")
 
 def contador(segundos):
     for i in range(segundos, 0, -1):
-        label_status.config(text=f"Iniciando em {i}...")
-        root.update()
+        atualizar_status(f"Iniciando em {i}...")
         time.sleep(1)
-    label_status.config(text="Rodando...")
-    root.update()
+    atualizar_status("Rodando...")
 
+def atualizar_status(texto):
+    # Atualiza o label de status de forma segura
+    label_status.after(0, lambda: label_status.config(text=texto))
 
 # Interface
 root = tk.Tk()
@@ -96,7 +100,7 @@ btn_start.pack(pady=5)
 
 btn_m2 = tk.Button(
     root,
-    text="AutoMastery 2 (Método Zenkai) OBS: Equipar Neo-Kikoho na tecla 1])",
+    text="AutoMastery 2 (Método Zenkai) OBS: Equipar Neo-Kikoho na tecla 1)",
     command=iniciar_mastery2,
     font=("JetBrains Mono", 12),
     bg="#2d2d2d", fg="white"
