@@ -27,7 +27,7 @@ NOME_FONTE = "JetBrains Mono"
 
 # Variáveis globais
 ativado = False
-contador_zenkai = 1
+contador_zenkai = 0
 proximo_zenkai_tempo = None
 tempo_x_pressionado = TEMPO_X_PADRAO
 
@@ -73,11 +73,10 @@ def automastery2():
 
         # Passo 4 - Reset
         p.press('esc')
-        for atraso in ATRASOS_RESET:
-            time.sleep(atraso)
-            if p.press('r') is not None or p.press('enter') is not None:
-                pass
-            time.sleep(atraso)
+        time.sleep(0.2)
+        p.press('r')
+        time.sleep(0.2)
+        p.press('enter')
 
         # Passo 5 - Espera 2 minutos
         for i in range(TEMPO_ESPERA, 0, -1):
@@ -185,7 +184,7 @@ def atualizar_status(texto):
 def resetar_contador():
     """Reseta o contador zenkai para 1"""
     global contador_zenkai
-    contador_zenkai = 1
+    contador_zenkai = 0
     atualizar_status("Contador resetado.")
 
 # BOTÃO PARA ATUALIZAR O TEMPO 'X'

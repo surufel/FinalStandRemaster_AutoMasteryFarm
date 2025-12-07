@@ -27,7 +27,7 @@ FONT_NAME = "JetBrains Mono"
 
 # Global variables
 active = False
-zenkai_count = 1
+zenkai_count = 0
 next_zenkai_time = None
 x_keydown_time = DEFAULT_X_HOLD_TIME
 
@@ -73,11 +73,10 @@ def automastery2():
 
         # Step 4 - Reset
         p.press('esc')
-        for delay in RESET_DELAYS:
-            time.sleep(delay)
-            if p.press('r') is not None or p.press('enter') is not None:
-                pass
-            time.sleep(delay)
+        time.sleep(0.2)
+        p.press('r')
+        time.sleep(0.2)
+        p.press('enter')
 
         # Step 5 - Wait for 2 minutes
         for i in range(WAIT_TIME, 0, -1):
@@ -176,7 +175,7 @@ def update_status(text):
 def reset_counter():
     """Reset zenkai counter to 1"""
     global zenkai_count
-    zenkai_count = 1
+    zenkai_count = 0
     update_status("Counter reset.")
 
 # BUTTON TO UPDATE 'X' TIME
