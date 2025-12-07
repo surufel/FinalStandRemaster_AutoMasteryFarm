@@ -10,8 +10,8 @@ This automation was developed upon request from friends.
 
 ## ⚙️ Features
 
-### AutoMastery 1 (Traditional Method)
-### Use for Kaiokens and already mastered forms that don't need time charging ki to use.
+### AutoMastery 1 (Times Used Method)
+### Use it to spam your form and gain the number of times you've used it, or use it in Kaiokens recommended for forms already mastered that don't need charging time to use ki.
 
 - Repeatedly presses the `G` key for mastery farming.
 - Ideal for players using the traditional method.

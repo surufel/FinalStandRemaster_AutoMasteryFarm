@@ -5,7 +5,7 @@ import pydirectinput as p
 from datetime import datetime, timedelta
 
 ativado = False
-contador_zenkai = 0
+contador_zenkai = 1
 proximo_zenkai_tempo = None
 tempo_x_pressionado = 0.5  # Tempo padrão para manter a tecla 'x'
 tempo_forma = 19 * 60  # 19 minutos em segundos
@@ -20,6 +20,8 @@ def automastery1():
 def automastery2():
     global ativado, contador_zenkai, proximo_zenkai_tempo, tempo_x_pressionado
     contador(5)  # 5s para o usuário ir pra tela do Roblox
+
+
     while ativado:
         # Calcula o tempo para o próximo zenkai
         tempo_ciclo = 4 + 8 + tempo_x_pressionado + 3 + 0.2 + 0.2 + 0.2 + 120  # Total em segundos
@@ -69,24 +71,6 @@ def automastery2():
         # Incrementa o contador de zenkai após completar um ciclo
         contador_zenkai += 1
 
-def iniciar_mastery1():
-    global ativado
-    if not ativado:
-        ativado = True
-        threading.Thread(target=automastery1, daemon=True).start()
-
-def iniciar_mastery2():
-    global ativado
-    if not ativado:
-        ativado = True
-        threading.Thread(target=automastery2, daemon=True).start()
-
-def iniciar_mastery3():
-    global ativado
-    if not ativado:
-        ativado = True
-        threading.Thread(target=automastery3, daemon=True).start()
-
 def automastery3():
     global ativado, tempo_forma
     contador(5)  # 5s para o usuário ir pra tela do Roblox
@@ -108,7 +92,7 @@ def automastery3():
     
     # Passo 3 - Permanência na transformação por 19 minutos
     tempo_inicio = datetime.now()
-    tempo_fim = tempo_inicio + timedelta(seconds=tempo_forma)
+    tempo_fim = tempo_inicio + timedelta(seconds=tempo_forma)  
     
     while ativado:
         tempo_restante = tempo_fim - datetime.now()
@@ -124,10 +108,36 @@ def automastery3():
         atualizar_status(f"Na transformação por: {minutos}m {segundos}s")
         time.sleep(1)
 
+
+
+# iniciar as masteries e fazer a parada delas sem que tenha problemas
+def iniciar_mastery1():
+    global ativado
+    if not ativado:
+        ativado = True
+        ativar_feedback_visual("AutoMastery 1")
+        threading.Thread(target=automastery1, daemon=True).start()
+
+def iniciar_mastery2():
+    global ativado
+    if not ativado:
+        ativado = True
+        ativar_feedback_visual("AutoMastery 2")
+        threading.Thread(target=automastery2, daemon=True).start()
+
+def iniciar_mastery3():
+    global ativado
+    if not ativado:
+        ativado = True
+        ativar_feedback_visual("AutoMastery 3")
+        threading.Thread(target=automastery3, daemon=True).start()
+
 def parar():
     global ativado, contador_zenkai
     ativado = False
+    desativar_feedback_visual()
     atualizar_status(f"Parado. Total de Zenkais: {contador_zenkai}")
+
 
 def contador(segundos):
     for i in range(segundos, 0, -1):
@@ -142,22 +152,59 @@ def atualizar_status(texto):
 def atualizar_status_zenkai(texto):
     # Atualiza o label de status de forma segura para exibição do contador zenkai
     label_status.after(0, lambda: label_status.config(text=texto))
-
-def resetar_contador():
     global contador_zenkai
     contador_zenkai = 0
     atualizar_status("Contador resetado.")
 
+def ativar_feedback_visual(mastery_nome):
+    # Desabilita todos os botões de iniciar
+    btn_start.config(state=tk.DISABLED, bg="#555555")
+    btn_m2.config(state=tk.DISABLED, bg="#555555")
+    btn_m3.config(state=tk.DISABLED, bg="#555555")
+    btn_atualizar_tempo.config(state=tk.DISABLED, bg="#555555")
+    btn_resetar.config(state=tk.DISABLED, bg="#555555")
+    
+    # Habilita apenas o botão parar
+    btn_stop.config(state=tk.NORMAL, bg="#aa0000")
+    
+    # Atualiza o label de status ativo
+    status_ativo.config(text=f"🔴 ATIVO: {mastery_nome}", fg="#00ff00")
+
+def desativar_feedback_visual():
+    # Habilita todos os botões de iniciar
+    btn_start.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_m2.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_m3.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_atualizar_tempo.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_resetar.config(state=tk.NORMAL, bg="#2d2d2d")
+    
+    # Volta o botão parar ao normal
+    btn_stop.config(state=tk.NORMAL, bg="#2d2d2d")
+    
+    # Limpa o label de status ativo
+    status_ativo.config(text="", fg="#00ff00")
+
+
+
+# /////////////
+# ////////////
 # Interface
 root = tk.Tk()
 root.title("Auto Mastery - Final Stand Remastered (by Surufel)")
-root.geometry("720x320")
+root.geometry("720x480")
 root.configure(bg="#1e1e1e")
 
 title = tk.Label(root, text="Automação de Maestria (por Surufel)", bg="#1e1e1e", fg="white", font=("JetBrains Mono", 14))
 title.pack(pady=10)
 
-btn_start = tk.Button(root,
+# Label de status ativo
+status_ativo = tk.Label(root, text="", bg="#1e1e1e", fg="#00ff00", font=("JetBrains Mono", 11))
+status_ativo.pack(pady=5)
+
+
+# BOTÃO AUTOMASTERY1
+btn_start = tk.Button(
+    root,
     text="AutoMastery 1 (Método Tradicional)",
     command=iniciar_mastery1,
     font=("JetBrains Mono", 12),
@@ -166,6 +213,8 @@ btn_start = tk.Button(root,
 )
 btn_start.pack(pady=5)
 
+
+# BOTÃO AUTOMASTERY2
 btn_m2 = tk.Button(
     root,
     text="AutoMastery 2 (Método Zenkai) OBS: Equipar Neo-Kikoho na tecla 1)",
@@ -175,6 +224,7 @@ btn_m2 = tk.Button(
 )
 btn_m2.pack(pady=5)
 
+# BOTÃO AUTOMASTERY3
 btn_m3 = tk.Button(
     root,
     text="AutoMastery 3 (Permanência 19 min) - Fica na transformação sem resetar",
@@ -182,6 +232,7 @@ btn_m3 = tk.Button(
     font=("JetBrains Mono", 12),
     bg="#2d2d2d", fg="white"
 )
+
 btn_m3.pack(pady=5)
 
 # Frame para controle do tempo da tecla 'x'

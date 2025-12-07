@@ -5,7 +5,7 @@ import pydirectinput as p
 from datetime import datetime, timedelta
 
 active = False
-zenkai_count = 0
+zenkai_count = 1
 next_zenkai_time = None
 x_keydown_time = 0.5  # Default time to hold 'x' key
 persist_time = 19 * 60  # 19 minutes in seconds
@@ -97,7 +97,7 @@ def automastery3():
         seconds_remaining = int(time_remaining.total_seconds())
         
         if seconds_remaining <= 0:
-            update_status("Persistence time finished!")
+            update_status("Transformation time finished!")
             break
         
         # Convert to minutes and seconds
@@ -106,28 +106,35 @@ def automastery3():
         update_status(f"In transformation for: {minutes}m {seconds}s")
         time.sleep(1)
 
+
+ # start and stop functions for each automastery 
 def start_mastery3():
     global active
     if not active:
         active = True
+        activate_visual_feedback("AutoMastery 3")
         threading.Thread(target=automastery3, daemon=True).start()
 
 def start_mastery1():
     global active
     if not active:
         active = True
+        activate_visual_feedback("AutoMastery 1")
         threading.Thread(target=automastery1, daemon=True).start()
 
 def start_mastery2():
     global active
     if not active:
         active = True
+        activate_visual_feedback("AutoMastery 2")
         threading.Thread(target=automastery2, daemon=True).start()
 
 def stop():
     global active, zenkai_count
     active = False
+    deactivate_visual_feedback()
     update_status(f"Stopped. Total Zenkais: {zenkai_count}")
+#///
 
 def countdown(seconds):
     for i in range(seconds, 0, -1):
@@ -142,11 +149,37 @@ def update_status(text):
 def update_zenkai_status(text):
     # Updates status label safely for zenkai counter display
     label_status.after(0, lambda: label_status.config(text=text))
-
-def reset_counter():
     global zenkai_count
-    zenkai_count = 0
+    zenkai_count = 1
     update_status("Counter reset.")
+
+def activate_visual_feedback(mastery_name):
+    # Disable all start buttons
+    btn_start.config(state=tk.DISABLED, bg="#555555")
+    btn_m2.config(state=tk.DISABLED, bg="#555555")
+    btn_m3.config(state=tk.DISABLED, bg="#555555")
+    btn_update_time.config(state=tk.DISABLED, bg="#555555")
+    btn_reset.config(state=tk.DISABLED, bg="#555555")
+    
+    # Enable only stop button
+    btn_stop.config(state=tk.NORMAL, bg="#aa0000")
+    
+    # Update active status label
+    status_active.config(text=f"🔴 ACTIVE: {mastery_name}", fg="#00ff00")
+
+def deactivate_visual_feedback():
+    # Enable all start buttons
+    btn_start.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_m2.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_m3.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_update_time.config(state=tk.NORMAL, bg="#2d2d2d")
+    btn_reset.config(state=tk.NORMAL, bg="#2d2d2d")
+    
+    # Reset stop button
+    btn_stop.config(state=tk.NORMAL, bg="#2d2d2d")
+    
+    # Clear active status label
+    status_active.config(text="", fg="#00ff00")
 
 
 # /////////
@@ -154,12 +187,18 @@ def reset_counter():
 # Interface
 root = tk.Tk()
 root.title("Auto Mastery - Final Stand Remastered (by Surufel)")
-root.geometry("720x320")
+root.geometry("720x480")
 root.configure(bg="#1e1e1e")
 
 title = tk.Label(root, text="Auto Mastery Farm (by Surufel)", bg="#1e1e1e", fg="white", font=("JetBrains Mono", 14))
 title.pack(pady=10)
 
+# Active status label
+status_active = tk.Label(root, text="", bg="#1e1e1e", fg="#00ff00", font=("JetBrains Mono", 11))
+status_active.pack(pady=5)
+
+
+#BUTTON AUTOMASTERY1
 btn_start = tk.Button(root,
     text="AutoMastery 1 (Traditional Method)",
     command=start_mastery1,
@@ -169,6 +208,8 @@ btn_start = tk.Button(root,
 )
 btn_start.pack(pady=5)
 
+
+#BUTTON AUTOMASTERY2
 btn_m2 = tk.Button(
     root,
     text="AutoMastery 2 (Zenkai Method) NOTE: Equip Neo-Kikoho on key 1)",
@@ -178,6 +219,8 @@ btn_m2 = tk.Button(
 )
 btn_m2.pack(pady=5)
 
+
+#BUTTON AUTOMASTERY3
 btn_m3 = tk.Button(
     root,
     text="AutoMastery 3 (19 min Persistence) - Stays in form without resetting",
@@ -212,6 +255,13 @@ def update_time_x():
 
 btn_update_time = tk.Button(frame_time_x, text="Update", command=update_time_x, font=("JetBrains Mono", 10), bg="#2d2d2d", fg="white")
 btn_update_time.pack(side=tk.LEFT, padx=5)
+
+btn_reset = tk.Button(root, text="Reset Counter",
+                        command=reset_counter,
+                        font=("JetBrains Mono", 12),
+                        bg="#2d2d2d",
+                        fg="white")
+btn_reset.pack(pady=5)
 
 btn_stop = tk.Button(root, text="Stop",
                       command=stop,

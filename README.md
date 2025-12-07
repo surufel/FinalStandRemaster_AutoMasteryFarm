@@ -8,8 +8,8 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 ## ⚙️ Funcionalidades
 
-### AutoMastery 1 (Método Tradicional)
-### Utilize para Kaiokens e formas já masterizadas que não precisam de tempo carregando ki para utilizar.
+### AutoMastery 1 (Método de quanto a forma foi usada)
+### Utilize para spammar sua forma e ganhar quantidades de vezes que você a usou, ou utilize em Kaiokens recomendado em formas já masterizadas que não precisam de tempo carregando ki para utilizar.
 
 
 - Pressiona repetidamente a tecla `G` para farm de maestria.
@@ -32,13 +32,14 @@ Essa automação foi desenvolvida por pedido de amigos.
   4. Reseta o personagem (`Esc` + `R` + `Enter`).
 - **Observação:** O padrão de carregar o ki para zenkai são `0.5s`, mas você pode ajustá-lo na aplicação.
 
-### AutoMastery 3 (Tempo Gasto no Método de Forma)
+### AutoMastery 3 (Método de Tempo Gasto na Forma)
 ### Use para AFK e já utilizou bastante os métodos tradicional e zenkai.
-# **Nota** Faça isso apenas se você estiver sem EXP e sem Zeni, qualquer moeda perdida será SUA RESPONSABILIDADE.
+# **Nota** Faça isso apenas se você estiver sem EXP e sem Zeni, qualquer EXP/Zeni perdido será SUA RESPONSABILIDADE.
+
 - Passos automatizados:
 1. Sai do ponto de spawn
 2. Transforma AFK exatamente por 19 minutos
-3. Resetar e Repetir.
+3. Reseta o personagem e repete os passos automatizados.
 
 
 ### Tempo de carregar o ki na tecla 'x' Configurável
