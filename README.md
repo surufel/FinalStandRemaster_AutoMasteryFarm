@@ -34,7 +34,7 @@ Essa automação foi desenvolvida por pedido de amigos.
 
 ### AutoMastery 3 (Método de Tempo Gasto na Forma)
 ### Use para AFK e já utilizou bastante os métodos tradicional e zenkai.
-# **Nota** Faça isso apenas se você estiver sem EXP e sem Zeni, qualquer EXP/Zeni perdido será SUA RESPONSABILIDADE.
+## **Nota:** Faça isso apenas se você estiver sem EXP e sem Zeni, qualquer EXP/Zeni perdido será SUA RESPONSABILIDADE.
 
 - Passos automatizados:
 1. Sai do ponto de spawn
@@ -80,11 +80,10 @@ git clone https://github.com/surufel/FinalStandRemaster_AutoMasteryFarm.git
 python -m pip install pydirectinput keyboard
 ```
 
-### 3. Execute a ferramenta pelo arquivo exe:
+### 3. Execute a ferramenta pelo arquivo .py clicando em abrir com -> Python:
 ```
 masterform-exe_ptbr.exe
 ```
-
 Ou então, abra diretamente no diretório do repositório clonado (pasta feita pelo git) e então abra o masterform-python_ptbr.py clicando com Botão Direito do Mouse -> Abrir Com -> Python.
 
 Alternativamente, você pode executar pelo terminal do python:

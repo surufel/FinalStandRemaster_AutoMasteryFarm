@@ -35,7 +35,7 @@ This automation was developed upon request from friends.
 
 ### AutoMastery 3 (Time Spent in Form Method)
 ### Use for AFK and already used traditional and zenkai method a lot.
-# **Note** Do this only if you are with no EXP and no Zeni, any currency lost will be YOUR FAULT.
+## **Note:** Do this only if you are with no EXP and no Zeni, any currency or exp lost will be YOUR OWN FAULT.
 - Automated steps:
   1. Walks out of spawn
   2. Transforms AFK's exactly for 19 minutes
@@ -81,17 +81,11 @@ git clone https://github.com/surufel/FinalStandRemaster_AutoMasteryFarm.git
 python -m pip install pydirectinput keyboard
 ```
 
-### 3. Run the tool from Terminal or executable file:
+### 3. Run the macro from folder or from the terminal:
 ```
-python masterform-python_en.py ( masterform-exe_en.exe )
+masterform-python_en.py ( terminal code > python masterform-python_en.py )
 ```
 
-Or, open the cloned repository directory and then open `masterform-python_en.py` by right-clicking -> Open With -> Python.
-
-Alternatively, you can run the standalone executable:
-```
-masterform-exe_en.exe
-```
 
 ---
 
