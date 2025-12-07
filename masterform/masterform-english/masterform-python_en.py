@@ -179,6 +179,19 @@ def reset_counter():
     zenkai_count = 1
     update_status("Counter reset.")
 
+# BUTTON TO UPDATE 'X' TIME
+def update_time_x():
+    global x_keydown_time
+    try:
+        value = float(entry_time_x.get())
+        if 0 < value <= 60:  # Max 60 seconds
+            x_keydown_time = value
+            update_status(f"'x' key time set to {value}s")
+        else:
+            update_status("Time must be between 0 and 60 seconds")
+    except ValueError:
+        update_status("Invalid value. Please enter a number.")
+
 # STOP THE AUTOMASTERY, WHICHEVER ONE IS RUNNING
 def stop():
     """Stop current mastery execution"""
@@ -195,7 +208,7 @@ def activate_visual_feedback(mastery_name):
         btn.config(state=tk.DISABLED, bg=COLOR_DARKER)
     
     btn_stop.config(state=tk.NORMAL, bg=COLOR_RED)
-    status_active.config(text=f"🔴 ACTIVE: {mastery_name}", fg=COLOR_GREEN)
+    status_active.config(text=f"[ACTIVE] {mastery_name}", fg=COLOR_GREEN)
 
 # DEACTIVATE VISUAL FEEDBACK AFTER CLICKING STOP BUTTON
 def deactivate_visual_feedback():
@@ -237,6 +250,10 @@ btn_m2.pack(pady=5)
 btn_m3 = tk.Button(root, text="AutoMastery 3 (19 min Form) - Exits spawn, transforms and repeats", command=start_mastery3, **BUTTON_STYLE)
 btn_m3.pack(pady=5)
 
+# COUNTER AND TIME DESCRIPTIONS
+info_label = tk.Label(root, text="AutoMastery 1: Continuous | AutoMastery 2: 2 min/cycle | AutoMastery 3: 19 min/cycle", bg=COLOR_DARK_BG, fg=COLOR_TEXT, font=(FONT_NAME, 8), wraplength=700, justify=tk.CENTER)
+info_label.pack(pady=3)
+
 # ///////////////////
 # ///////////////////
 # FRAME FOR 'X' KEY TIME CONTROL (CHARGE KI DURING TRANSFORMATION)
@@ -249,19 +266,6 @@ label_time_x.pack(side=tk.LEFT, padx=5)
 entry_time_x = tk.Entry(frame_time_x, width=5, font=(FONT_NAME, 10), bg=COLOR_DARK, fg="white")
 entry_time_x.pack(side=tk.LEFT, padx=5)
 entry_time_x.insert(0, "0.5")
-
-# BUTTON TO UPDATE 'X' TIME
-def update_time_x():
-    global x_keydown_time
-    try:
-        value = float(entry_time_x.get())
-        if 0 < value <= 60:  # Max 60 seconds
-            x_keydown_time = value
-            update_status(f"'x' key time set to {value}s")
-        else:
-            update_status("Time must be between 0 and 60 seconds")
-    except ValueError:
-        update_status("Invalid value. Please enter a number.")
 
 btn_update_time = tk.Button(frame_time_x, text="Update", command=update_time_x, font=(FONT_NAME, 10), bg=COLOR_DARK, fg="white")
 btn_update_time.pack(side=tk.LEFT, padx=5)

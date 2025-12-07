@@ -188,6 +188,19 @@ def resetar_contador():
     contador_zenkai = 1
     atualizar_status("Contador resetado.")
 
+# BOTÃO PARA ATUALIZAR O TEMPO 'X'
+def atualizar_tempo_x():
+    global tempo_x_pressionado
+    try:
+        valor = float(entry_tempo_x.get())
+        if 0 < valor <= 60:  # Máximo 60 segundos
+            tempo_x_pressionado = valor
+            atualizar_status(f"Tempo de 'x' definido para {valor}s")
+        else:
+            atualizar_status("Tempo deve estar entre 0 e 60 segundos")
+    except ValueError:
+        atualizar_status("Valor inválido. Digite um número.")
+
 # FEEDBACK VISUAL PRA SABER SE O CÓDIGO ESTÁ ATIVO OU NÃO
 def ativar_feedback_visual(nome_mastery):
     """Desabilita todos os botões exceto parar"""
@@ -196,7 +209,7 @@ def ativar_feedback_visual(nome_mastery):
         btn.config(state=tk.DISABLED, bg=COR_MAIS_ESCURA)
     
     btn_stop.config(state=tk.NORMAL, bg=COR_VERMELHO)
-    status_ativo.config(text=f"🔴 ATIVO: {nome_mastery}", fg=COR_VERDE)
+    status_ativo.config(text=f"[ATIVO] {nome_mastery}", fg=COR_VERDE)
 
 # DESATIVA O FEEDBACK VISUAL DEPOIS QUE CLICA EM PARAR
 def desativar_feedback_visual():
@@ -237,6 +250,10 @@ btn_m2.pack(pady=5)
 btn_m3 = tk.Button(root, text="AutoMastery 3 (19 min) - Sai do spawn, transforma e repete", command=iniciar_mastery3, **ESTILO_BOTAO)
 btn_m3.pack(pady=5)
 
+# DESCRIÇÕES DOS CONTADORES E TEMPOS
+info_label = tk.Label(root, text="AutoMastery 1: Contínuo | AutoMastery 2: 2 min/ciclo | AutoMastery 3: 19 min/ciclo", bg=COR_FUNDO_ESCURO, fg=COR_TEXTO, font=(NOME_FONTE, 8), wraplength=700, justify=tk.CENTER)
+info_label.pack(pady=3)
+
 #///////////////////
 #///////////////////
 # FRAME PARA O CONTROLE DE TEMPO DA TECLA 'X' (CARREGAR O KI NA TRANSFORMAÇÃO)
@@ -249,19 +266,6 @@ label_tempo_x.pack(side=tk.LEFT, padx=5)
 entry_tempo_x = tk.Entry(frame_tempo_x, width=5, font=(NOME_FONTE, 10), bg=COR_ESCURA, fg="white")
 entry_tempo_x.pack(side=tk.LEFT, padx=5)
 entry_tempo_x.insert(0, "0.5")
-
-# BOTÃO PARA ATUALIZAR O TEMPO 'X'
-def atualizar_tempo_x():
-    global tempo_x_pressionado
-    try:
-        valor = float(entry_tempo_x.get())
-        if 0 < valor <= 60:  # Máximo 60 segundos
-            tempo_x_pressionado = valor
-            atualizar_status(f"Tempo de 'x' definido para {valor}s")
-        else:
-            atualizar_status("Tempo deve estar entre 0 e 60 segundos")
-    except ValueError:
-        atualizar_status("Valor inválido. Digite um número.")
 
 btn_atualizar_tempo = tk.Button(frame_tempo_x, text="Atualizar", command=atualizar_tempo_x, font=(NOME_FONTE, 10), bg=COR_ESCURA, fg="white")
 btn_atualizar_tempo.pack(side=tk.LEFT, padx=5)
